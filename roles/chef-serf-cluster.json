@@ -1,0 +1,25 @@
+{
+  "name": "chef-serf-cluster",
+  "description": "Base role for chef-serf-cluster",
+  "default_attributes": {
+    "authorization": {
+      "sudo": {
+        "sudoers_defaults": [
+          "env_reset",
+          "exempt_group=sudo",
+          "mail_badpass",
+          "secure_path=\"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\"",
+          "env_keep = \"SERF_EVENT\""
+        ],
+        "users": [ "serf" ],
+        "groups": [ "admin", "sudo" ],
+        "passwordless": "true"
+      }
+    }
+  },
+  "run_list": [
+    "recipe[sudo]",
+    "recipe[chef-serf-cluster]",
+    "recipe[serf]"
+  ]
+}
