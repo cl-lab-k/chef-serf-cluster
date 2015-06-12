@@ -40,7 +40,7 @@ end
 
 desc 'show sample.conf'
 task :sample_conf do
-  sh "knife ssh 'name:*' -x vagrant -P vagrant 'cat /tmp/sample.conf'"
+  sh "knife ssh 'name:*' -x vagrant -P vagrant 'cat /etc/sample.conf'"
 end
 
 task :default => [ :vendor, :upload, :role, :converge ]
