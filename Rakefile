@@ -30,17 +30,17 @@ end
 #
 desc 'run chef-client'
 task :converge do
-  sh "knife ssh 'name:*' -x vagrant -P vagrant -a hostname 'sudo chef-client'"
+  sh "knife ssh 'name:*' -x vagrant -P vagrant 'sudo chef-client'"
 end
 
 desc 'run serf members'
 task :serf_members do
-  sh "knife ssh 'name:*' -x vagrant -P vagrant -a hostname 'serf members'"
+  sh "knife ssh 'name:*' -x vagrant -P vagrant 'serf members'"
 end
 
 desc 'show sample.conf'
 task :sample_conf do
-  sh "knife ssh 'name:*' -x vagrant -P vagrant -a hostname 'cat /tmp/sample.conf'"
+  sh "knife ssh 'name:*' -x vagrant -P vagrant 'cat /tmp/sample.conf'"
 end
 
 task :default => [ :vendor, :upload, :role, :converge ]
